@@ -1,0 +1,41 @@
+
+  <form #doctorForm="ngForm" style="height: 400px;margin-top: 24px">
+    <div class="form-group">
+      <div class="ui-inputgroup">
+            <span class="ui-float-label">
+                <input type="text" id="candidateName" pInputText [(ngModel)]="doctor.doctor_name" name="doctor_name" required />
+                <label for="candidateName">Candidate Name</label>
+            </span>
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="ui-inputgroup">
+          <span class="ui-float-label">
+              <p-dropdown id="profession" name="profession" [options]="profession" [(ngModel)]="doctor.profession"   [style]="{'width':'150px'}"   ></p-dropdown>
+              <label for="profession">Profession</label>
+          </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="ui-inputgroup">
+          <span class="ui-float-label">
+              <p-dropdown id="city" name="city" [options]="city" [style]="{'width':'150px'}" [(ngModel)]="doctor.city" ></p-dropdown>
+              <label for="city">City</label>
+          </span>
+      </div>
+    </div>
+    <div class="rating">
+      <legend>Please rate:</legend>
+      <input type="radio" [(ngModel)]="doctor.rating" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+      <input type="radio" [(ngModel)]="doctor.rating" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+      <input type="radio" [(ngModel)]="doctor.rating" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+      <input type="radio" [(ngModel)]="doctor.rating" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+      <input type="radio" [(ngModel)]="doctor.rating" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+    </div>
+  </form>
+
+  <p-footer>
+    <button type="button" pButton icon="fa-check" label="Save"
+            (click)="updateDoc()" [disabled]="!doctorForm.form.valid"></button>
+  </p-footer>
